@@ -13,11 +13,9 @@
 
         public string DebitCardName{ get; set; }
 
-        public DebitCard(string debitCardNo, DateTime debitCardExpiryDate, string debitCardName)
+        public DebitCard(string debitCardNo, DateTime debitCardExpiryDate, string debitCardName, string DebitCard, double amount)
+            : base(DebitCard, amount)
         {
-            DebitCardNo = debitCardNo;
-            DebitCardExpiryDate = debitCardExpiryDate;
-            DebitCardName = debitCardName;
         }
     }
 }

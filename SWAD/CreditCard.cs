@@ -13,11 +13,9 @@
 
         public string CreditCardName { get; set; }
 
-        public CreditCard(string creditCardNo, DateTime creditCardExpiryDate, string creditCardName)
+        public CreditCard(string creditCardNo, DateTime creditCardExpiryDate, string creditCardName, string CreditCard, double amount)
+            : base(CreditCard, amount)
         {
-            CreditCardNo = creditCardNo;
-            CreditCardExpiryDate = creditCardExpiryDate;
-            CreditCardName = creditCardName;
         }
     }
 }
