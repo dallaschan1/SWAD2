@@ -6,7 +6,7 @@
 
         private DateTime creditCardExpiryDate;
 
-        private string dcreditCardName;
+        private string creditCardName;
         public string CreditCardNo { get; set; }
 
         public DateTime CreditCardExpiryDate { get; set; }

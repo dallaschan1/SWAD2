@@ -6,7 +6,7 @@
 
         private DateTime debitCardExpiryDate;
 
-        private string debiteCardName;
+        private string debitCardName;
         public string DebitCardNo { get; set; }
 
         public DateTime DebitCardExpiryDate { get; set; }
