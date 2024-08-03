@@ -2,6 +2,12 @@
 {
     internal class DigitalWallet
     {
+        private string walletProvider;
+        private string providerUserId;
+        private string password;
+        private string walletEmail;
+        private string? walletPhoneNumber;
+        
         public string WalletProvider { get; set; }
 
         public string ProviderUserId { get; set; }
