@@ -5,7 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_RegisterAcc
+namespace Assignment2
 {
     internal class Account
     {
