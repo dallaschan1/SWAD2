@@ -13,9 +13,9 @@ namespace Assignment2
 
         public int AdminId;
 
-        public Admin(int adminId)
+        public Admin(string username, string password, string email, string fullName, string phoneNo, int adminId)
+            : base(username, password, email, fullName, phoneNo)
         {
-            AdminId = adminId;
         }
     }
 }
