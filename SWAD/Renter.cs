@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Assignment2.Rental;
 
+
 namespace Assignment2
 {
     internal class Renter : Account
