@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static Assignment2.Rental;
 
 namespace Assignment2
 {
@@ -83,6 +84,41 @@ namespace Assignment2
             AmountSpent = amountSpent;
             Verified = verified;
             
+        }
+
+        public Rental getPendingOrder()
+        {
+            foreach (Rental rental in rentals)
+            {
+                if (rental.RentalStatus == RentalStatuses.InProgress)
+                {
+                    return rental;
+                }
+            }
+            return null;
+        }
+
+
+        public void updateRental(RentalStatuses Status)
+        {
+            foreach (Rental rental in rentals)
+            {
+                if (rental.RentalStatus == RentalStatuses.InProgress)
+                {
+                    rental.updateRental(Status);
+                }
+            }
+        }
+
+        public void deleteRental()
+        {
+            foreach (Rental rental in rentals)
+            {
+                if (rental.RentalStatus == RentalStatuses.InProgress)
+                {
+                    rentals.Remove(rental);
+                }
+            }
         }
     }
 }

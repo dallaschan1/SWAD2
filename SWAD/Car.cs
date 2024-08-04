@@ -79,7 +79,7 @@ namespace Assignment2
         public List<TimeSlots> TimeSlots
         {
             get { return timeSlots; }
-            
+
         }
 
         public Car(int vehicleId, string type, string make, string model, int year, List<string> photoUrls, int mileage, string fuelType, string licensePlate, double rentalRate)
@@ -94,7 +94,7 @@ namespace Assignment2
             FuelType = fuelType;
             LicensePlate = licensePlate;
             RentalRate = rentalRate;
-            
+
         }
         // Method to check if insurance exists for this car
         public bool FindInsurance()
@@ -112,6 +112,27 @@ namespace Assignment2
             Mileage = mileage;
             FuelType = fuelType;
             LicensePlate = licensePlate;
+        }
+
+        public void AddTimeSlots(TimeSlots timeSlots)
+        {
+            this.timeSlots.Add(timeSlots);
+        }
+
+        public void updateTimeSlotsAvailability(DateOnly startDate, DateOnly endDate, bool status)
+        {
+            foreach (TimeSlots timeSlot in TimeSlots)
+            {
+                if (timeSlot.Date >= startDate && timeSlot.Date <= endDate)
+                {
+                    timeSlot.updateAvailability(status);
+                }
+            }
+        }
+
+        public List<TimeSlots> getTimeSlots()
+        {
+            return this.TimeSlots.Where(slot => slot.Availability).ToList();
         }
     }
 }
