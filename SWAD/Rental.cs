@@ -4,48 +4,81 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Assignment2
 {
     internal class Rental
     {
+        // Private fields
         private int rentalId;
-
         private DateTime startDate;
-
         private DateTime endDate;
-
         private string rentalStatus;
-
-        private string pickUpMethod;
-
-        private string returnMethod;
-
+        private string? pickUpAddress;
+        private string? deliveryAddress;
         private DateTime returnedDate;
+        private double cost;
 
-        public int RentalId { get; set; }
 
-        public DateTime StartDate { get; set; }
+        // Public properties
+        public int RentalId
+        {
+            get { return rentalId; }
+            set { rentalId = value; }
+        }
 
-        public DateTime EndDate { get; set; }
+        public DateTime StartDate
+        {
+            get { return startDate; }
+            set { startDate = value; }
+        }
 
-        public string RentalStatus { get; set;}
+        public DateTime EndDate
+        {
+            get { return endDate; }
+            set { endDate = value; }
+        }
 
-        public string PickUpMethod { get; set;}
+        public string RentalStatus
+        {
+            get { return rentalStatus; }
+            set { rentalStatus = value; }
+        }
 
-        public string ReturnMethod { get; set;}
+        public string PickUpAddress
+        {
+            get { return pickUpAddress; }
+            set { pickUpAddress = value; }
+        }
 
-        public DateTime ReturnedDate { get; set; }
+        public string DeliveryAddress
+        {
+            get { return deliveryAddress; }
+            set { deliveryAddress = value; }
+        }
 
+        public DateTime ReturnedDate
+        {
+            get { return returnedDate; }
+            set { returnedDate = value; }
+        }
+
+        public double Cost
+        {
+            get { return cost; }
+            set { cost = value; }
+        }
         // Constructor
-        public Rental(int rentalId, DateTime startDate, DateTime endDate, string rentalStatus, string pickUpMethod, string returnMethod, DateTime returnedDate)
+        public Rental(int rentalId, DateTime startDate, DateTime endDate, string rentalStatus, string pickUpAddress, string deliveryAddress, DateTime returnedDate, int cost)
         {
             RentalId = rentalId;
             StartDate = startDate;
             EndDate = endDate;
             RentalStatus = rentalStatus;
-            PickUpMethod = pickUpMethod;
-            ReturnMethod = returnMethod;
+            PickUpAddress = pickUpAddress;
+            DeliveryAddress = deliveryAddress;
             ReturnedDate = returnedDate;
+            Cost = cost;
         }
     }
 }
