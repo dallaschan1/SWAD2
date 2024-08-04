@@ -20,6 +20,7 @@ namespace Assignment2
         public List<Car> Cars
         {
             get { return cars; }
+            set { cars = value; }
          
         }
 
