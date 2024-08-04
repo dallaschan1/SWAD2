@@ -5,7 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_RegisterAcc
+namespace Assignment2
 {
     internal class Admin : Account
     {
@@ -13,9 +13,9 @@ namespace Assignment2_RegisterAcc
 
         public int AdminId;
 
-        public Admin(int adminId)
+        public Admin(string username, string password, string email, string fullName, string phoneNo, int adminId)
+            : base(username, password, email, fullName, phoneNo)
         {
-            AdminId = adminId;
         }
     }
 }
