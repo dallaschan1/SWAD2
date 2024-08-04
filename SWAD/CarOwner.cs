@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_RegisterAcc
+namespace Assignment2
 {
     internal class CarOwner : Account
     {

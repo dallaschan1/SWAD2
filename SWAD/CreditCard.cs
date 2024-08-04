@@ -1,4 +1,4 @@
-﻿namespace SWAD
+﻿namespace Assignment2
 {
     internal class CreditCard : Payment
     {

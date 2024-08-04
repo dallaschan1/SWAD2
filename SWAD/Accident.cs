@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWAD
+namespace Assignment2
 {
     internal class Accident
     {
