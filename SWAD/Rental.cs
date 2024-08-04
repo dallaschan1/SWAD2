@@ -149,5 +149,36 @@ namespace Assignment2
         {
             RentalStatus = Status;
         }
+
+        // Added a method to check if a date range is available
+        public static bool IsDateRangeAvailable(List<Rental> rentals, int rentalId, DateTime newStartDate, DateTime newEndDate)
+        {
+            foreach (var rental in rentals)
+            {
+                // Skip the rental with the same ID (since we're modifying it)
+                if (rental.RentalId == rentalId)
+                    continue;
+
+                // Check for overlap
+                if ((newStartDate < rental.EndDate && newEndDate > rental.StartDate))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Method to calculate additional cost
+        private static double CalculateAdditionalCost(DateTime originalEndDate, DateTime newEndDate, double costPerHour)
+        {
+            // Calculate the duration of the extended rental period
+            TimeSpan additionalDuration = newEndDate - originalEndDate;
+
+            // Calculate the additional cost
+            double additionalCost = additionalDuration.TotalHours * costPerHour;
+
+            return additionalCost;
+
+        }
     }
 }
