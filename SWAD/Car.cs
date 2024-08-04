@@ -2,7 +2,7 @@
 {
     internal class Car
     {
-        private string vehicleId;
+        private int vehicleId;
 
         private string type;
 
@@ -22,7 +22,7 @@
 
         private double rentalRate;
 
-        public string VehicleId { get; set; }
+        public int VehicleId { get; set; }
 
         public string Type { get; set; }
 
@@ -43,7 +43,7 @@
         public double RentalRate { get; set; }
 
         // Constructor
-        public Car(string vehicleId, string type, string make, string model, int year, List<string> photoUrls, int mileage, string fuelType, string licensePlate, double rentalRate)
+        public Car(int vehicleId, string type, string make, string model, int year, List<string> photoUrls, int mileage, string fuelType, string licensePlate, double rentalRate)
         {
             VehicleId = vehicleId;
 
