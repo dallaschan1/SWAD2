@@ -1,4 +1,6 @@
-﻿namespace Assignment2
+﻿using SWAD;
+
+namespace Assignment2
 {
     internal class Car
     {
@@ -41,6 +43,7 @@
         public string LicensePlate { get; set; }
 
         public double RentalRate { get; set; }
+        public Insurance? Insurance { get; set; }
 
         // Constructor
         public Car(int vehicleId, string type, string make, string model, int year, List<string> photoUrls, int mileage, string fuelType, string licensePlate, double rentalRate)
@@ -64,6 +67,23 @@
             LicensePlate = licensePlate;
 
             RentalRate = rentalRate;
+        }
+        // Method to check if insurance exists for this car
+        public bool FindInsurance()
+        {
+            return Insurance != null;
+        }
+        // Method to update vehicle details
+        public void UpdateVehicleDetails(string type, string make, string model, int year, List<string> photoUrls, int mileage, string fuelType, string licensePlate)
+        {
+            Type = type;
+            Make = make;
+            Model = model;
+            Year = year;
+            PhotoUrls = photoUrls;
+            Mileage = mileage;
+            FuelType = fuelType;
+            LicensePlate = licensePlate;
         }
     }
 }
