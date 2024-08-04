@@ -11,11 +11,15 @@ namespace Assignment2
     {
         private int adminId;
 
-        public int AdminId;
-
-        public Admin(string username, string password, string email, string fullName, string phoneNo, int adminId)
-            : base(username, password, email, fullName, phoneNo)
+        public int AdminId
         {
+            get { return adminId; }
+            set { adminId = value; }
+        }
+
+        public Admin(string username, string password, string email, string fullName, string phoneNo, int adminId): base(username, password, email, fullName, phoneNo)
+        {
+            AdminId = adminId;
         }
     }
 }

@@ -12,8 +12,16 @@ namespace Assignment2
         private string paymentMtd;
         private double totalAmt;
 
-        public string PaymentMtd { get; set; }
-        public double TotalAmt { get; set; }
+        public string PaymentMtd
+        {
+            get { return paymentMtd; }
+            set { paymentMtd = value; }
+        }
+        public double TotalAmt
+        {
+            get { return totalAmt; }
+            set { totalAmt = value; }
+        }
 
         public Payment(string paymentMtd, double totalAmt)
         {

@@ -9,14 +9,25 @@ namespace Assignment2
 {
     internal class CarOwner : Account
     {
-        private int carOwnerid;
+        private int carOwnerId;
+        private List<Car> cars = new List<Car>();
 
-        public int CarOwnerId { get; set; }
-        public List<Car> Cars { get; set; } = new List<Car>();
+        public int CarOwnerId
+        {
+            get { return carOwnerId; }
+            set { carOwnerId = value; }
+        }
+        public List<Car> Cars
+        {
+            get { return cars; }
+         
+        }
 
-        public CarOwner(string username, string password, string email, string fullName, string phoneNo, int carOwnerid)
+        public CarOwner(string username, string password, string email, string fullName, string phoneNo, int carOwnerId)
             : base(username, password, email, fullName, phoneNo)
         {
+            CarOwnerId = carOwnerId;
         }
+
     }
 }

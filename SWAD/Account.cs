@@ -14,20 +14,35 @@ namespace Assignment2
         private string email;
         private string fullName;
         private string phoneNo;
-
         private static List<Account> userList = new List<Account>();
 
-        public string Username { get; set; }
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+        public string PhoneNo
+        {
+            get { return phoneNo; }
+            set { phoneNo = value; }
+        }
 
-        public string Password { get; set; }
-
-        public string Email { get; set; }
-
-        public string FullName { get; set; }
-
-        public string PhoneNo { get; set; }
-
-        public List<Account> UserList;
+        public List<Account> UserList { get { return userList; } }
 
         public Account(string username, string password, string email, string fullName, string phoneNo)
         {
@@ -36,7 +51,6 @@ namespace Assignment2
             Email = email;
             FullName = fullName;
             PhoneNo = phoneNo;
-            //userList = new List<Account>();
         }
 
         //Method to check whether username is taken

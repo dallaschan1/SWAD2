@@ -9,7 +9,7 @@ namespace Assignment2
 {
     internal class Rental
     {
-        // Private fields
+
         private int rentalId;
         private DateTime startDate;
         private DateTime endDate;
@@ -18,58 +18,91 @@ namespace Assignment2
         private string? deliveryAddress;
         private DateTime returnedDate;
         private double cost;
+        private Payment? payment;
+        private List<Review> reviews = new List<Review>();
+        private VehicleInspection vehicleInspection;
+        private List<Accident> accidents = new List<Accident>();
+        private Car car;
+        private ICarStation pickUpICarStation;
+        private ICarStation returnICarStation;
 
-
-        // Public properties
         public int RentalId
         {
             get { return rentalId; }
             set { rentalId = value; }
         }
-
         public DateTime StartDate
         {
             get { return startDate; }
             set { startDate = value; }
         }
-
         public DateTime EndDate
         {
             get { return endDate; }
             set { endDate = value; }
         }
-
         public string RentalStatus
         {
             get { return rentalStatus; }
             set { rentalStatus = value; }
         }
-
-        public string PickUpAddress
+        public string? PickUpAddress
         {
             get { return pickUpAddress; }
             set { pickUpAddress = value; }
         }
-
-        public string DeliveryAddress
+        public string? DeliveryAddress
         {
             get { return deliveryAddress; }
             set { deliveryAddress = value; }
         }
-
         public DateTime ReturnedDate
         {
             get { return returnedDate; }
             set { returnedDate = value; }
         }
-
         public double Cost
         {
             get { return cost; }
             set { cost = value; }
         }
-        // Constructor
-        public Rental(int rentalId, DateTime startDate, DateTime endDate, string rentalStatus, string pickUpAddress, string deliveryAddress, DateTime returnedDate, int cost)
+        public Payment? Payment
+        {
+            get { return payment; }
+            set { payment = value; }
+        }
+        public List<Review> Reviews
+        {
+            get { return reviews; }
+           
+        }
+        public VehicleInspection VehicleInspection
+        {
+            get { return vehicleInspection; }
+            set { vehicleInspection = value; }
+        }
+        public List<Accident> Accidents
+        {
+            get { return accidents; }
+      
+        }
+        public Car Car
+        {
+            get { return car; }
+            set { car = value; }
+        }
+        public ICarStation PickUpICarStation
+        {
+            get { return pickUpICarStation; }
+            set { pickUpICarStation = value; }
+        }
+        public ICarStation ReturnICarStation
+        {
+            get { return returnICarStation; }
+            set { returnICarStation = value; }
+        }
+
+        public Rental(int rentalId, DateTime startDate, DateTime endDate, string rentalStatus, string? pickUpAddress, string? deliveryAddress, DateTime returnedDate, double cost)
         {
             RentalId = rentalId;
             StartDate = startDate;
@@ -79,6 +112,7 @@ namespace Assignment2
             DeliveryAddress = deliveryAddress;
             ReturnedDate = returnedDate;
             Cost = cost;
+            
         }
     }
 }

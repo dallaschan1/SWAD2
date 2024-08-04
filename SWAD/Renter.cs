@@ -9,32 +9,80 @@ namespace Assignment2
 {
     internal class Renter : Account
     {
-        private int renterid;
+        private int renterId;
         private string renterStatus;
         private string issuingCountry;
         private string classOfLicense;
         private double amountSpent;
         private bool verified;
-
-        private string dateOfBirth;
+        private DateTime dateOfBirth;
         private string licenseNumber;
-        private string licenseExpiry;
+        private DateTime licenseExpiry;
+        private List<Rental> rentals = new List<Rental>();
 
-        public int renterId { get; set; }
-        public string RenterStatus { get; set; }
-        public string IssuingCountry { get; set; }
-        public string ClassOfLicense { get; set; }
-        public double AmountSpent { get; set; }
-        public bool Verified { get; set; }
-
-        public DateTime DateOfBirth { get; set; }
-        public string LicenseNumber { get; set; }
-        public DateTime LicenseExpiry { get; set; }
-
-        public Renter(string username, string password, string email, string fullName, string phoneNo, string dateOfBirth, string licenseNumber, string licenseExpiry, int renterId
-            , string renterStatus, string issuingCountry, string classOfLicense, double amountSpent, bool verified)
-            : base(username, password, email, fullName, phoneNo)
+        public int RenterId
         {
+            get { return renterId; }
+            set { renterId = value; }
+        }
+        public string RenterStatus
+        {
+            get { return renterStatus; }
+            set { renterStatus = value; }
+        }
+        public string IssuingCountry
+        {
+            get { return issuingCountry; }
+            set { issuingCountry = value; }
+        }
+        public string ClassOfLicense
+        {
+            get { return classOfLicense; }
+            set { classOfLicense = value; }
+        }
+        public double AmountSpent
+        {
+            get { return amountSpent; }
+            set { amountSpent = value; }
+        }
+        public bool Verified
+        {
+            get { return verified; }
+            set { verified = value; }
+        }
+        public DateTime DateOfBirth
+        {
+            get { return dateOfBirth; }
+            set { dateOfBirth = value; }
+        }
+        public string LicenseNumber
+        {
+            get { return licenseNumber; }
+            set { licenseNumber = value; }
+        }
+        public DateTime LicenseExpiry
+        {
+            get { return licenseExpiry; }
+            set { licenseExpiry = value; }
+        }
+        public List<Rental> Rentals
+        {
+            get { return rentals; }
+           
+        }
+
+        public Renter(string username, string password, string email, string fullName, string phoneNo,DateTime dateOfBirth, string licenseNumber, DateTime licenseExpiry, int renterId, string renterStatus, string issuingCountry, string classOfLicense, double amountSpent, bool verified): base(username, password, email, fullName, phoneNo)
+        {
+            DateOfBirth = dateOfBirth;
+            LicenseNumber = licenseNumber;
+            LicenseExpiry = licenseExpiry;
+            RenterId = renterId;
+            RenterStatus = renterStatus;
+            IssuingCountry = issuingCountry;
+            ClassOfLicense = classOfLicense;
+            AmountSpent = amountSpent;
+            Verified = verified;
+            
         }
     }
 }

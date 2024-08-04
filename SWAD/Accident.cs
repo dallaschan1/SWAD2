@@ -10,14 +10,25 @@ namespace Assignment2
     {
         private DateTime timeOfAccident;
         private string descriptionOfAccident;
+        
 
-        public DateTime TimeOfAccident { get; set; } = DateTime.Now;
-        public string DescriptionOfAccident { get; set; }
+        public DateTime TimeOfAccident
+        {
+            get { return timeOfAccident; }
+            set { timeOfAccident = value; }
+        }
+        public string DescriptionOfAccident
+        {
+            get { return descriptionOfAccident; }
+            set { descriptionOfAccident = value; }
+        }
+        
 
         public Accident(DateTime timeOfAccident, string descriptionOfAccident)
         {
             TimeOfAccident = timeOfAccident;
             DescriptionOfAccident = descriptionOfAccident;
+            
         }
     }
 }
