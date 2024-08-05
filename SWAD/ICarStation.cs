@@ -32,7 +32,10 @@ namespace Assignment2
         {
             get { return cars; }
         }
+        public ICarStation()
+        {
 
+        }
         public ICarStation(int stationId, string stationAddress, string stationName)
         {
             StationId = stationId;
@@ -41,5 +44,15 @@ namespace Assignment2
             
         }
 
+        public void AddCar(Car car)
+        {
+            cars.Add(car);
+        }
+
+
+        public Boolean checkCarInICarStation(Car aCar)
+        {
+            return cars.Contains(aCar);
+        }
     }
 }

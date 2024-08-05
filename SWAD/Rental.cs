@@ -19,32 +19,33 @@ namespace Assignment2
         }
 
         private int rentalId;
-        private DateOnly startDate;
-        private DateOnly endDate;
+        private DateTime startDate;
+        private DateTime endDate;
         private RentalStatuses rentalStatus;
-        private string? pickUpAddress;
         private string? deliveryAddress;
-        private DateTime returnedDate;
+        private string? dropOffAddress;
+        private DateTime? returnedDate;
+        private DateTime rentalStartDate;
         private double cost;
         private Payment? payment;
         private List<Review> reviews = new List<Review>();
-        private VehicleInspection vehicleInspection;
+        private VehicleInspection? vehicleInspection;
         private List<Accident> accidents = new List<Accident>();
         private Car car;
         private ICarStation pickUpICarStation;
-        private ICarStation returnICarStation;
+        private ICarStation dropOffICarStation;
 
         public int RentalId
         {
             get { return rentalId; }
             set { rentalId = value; }
         }
-        public DateOnly StartDate
+        public DateTime StartDate
         {
             get { return startDate; }
             set { startDate = value; }
         }
-        public DateOnly EndDate
+        public DateTime EndDate
         {
             get { return endDate; }
             set { endDate = value; }
@@ -54,20 +55,25 @@ namespace Assignment2
             get { return rentalStatus; }
             set { rentalStatus = value; }
         }
-        public string? PickUpAddress
-        {
-            get { return pickUpAddress; }
-            set { pickUpAddress = value; }
-        }
         public string? DeliveryAddress
         {
             get { return deliveryAddress; }
             set { deliveryAddress = value; }
         }
-        public DateTime ReturnedDate
+        public string? DropOffAddress
+        {
+            get { return dropOffAddress; }
+            set { dropOffAddress = value; }
+        }
+        public DateTime? ReturnedDate
         {
             get { return returnedDate; }
             set { returnedDate = value; }
+        }
+        public DateTime RentalStartDate
+        {
+            get { return rentalStartDate; }
+            set { rentalStartDate = value; }
         }
         public double Cost
         {
@@ -84,7 +90,7 @@ namespace Assignment2
             get { return reviews; }
            
         }
-        public VehicleInspection VehicleInspection
+        public VehicleInspection? VehicleInspection
         {
             get { return vehicleInspection; }
             set { vehicleInspection = value; }
@@ -104,22 +110,26 @@ namespace Assignment2
             get { return pickUpICarStation; }
             set { pickUpICarStation = value; }
         }
-        public ICarStation ReturnICarStation
+        public ICarStation DropOffICarStation
         {
-            get { return returnICarStation; }
-            set { returnICarStation = value; }
+            get { return dropOffICarStation; }
+            set { dropOffICarStation = value; }
         }
 
-        public Rental(int rentalId, DateOnly startDate, DateOnly endDate, RentalStatuses rentalStatus, string? pickUpAddress, string? deliveryAddress, DateTime returnedDate, double cost)
+        public Rental(int rentalId, DateTime startDate, DateTime endDate, RentalStatuses rentalStatus, string? dropOffAddress, string? deliveryAddress, double cost, Car car, ICarStation dropOffICarStation, ICarStation pickUpICarStation)
         {
             RentalId = rentalId;
             StartDate = startDate;
             EndDate = endDate;
             RentalStatus = rentalStatus;
-            PickUpAddress = pickUpAddress;
             DeliveryAddress = deliveryAddress;
-            ReturnedDate = returnedDate;
+            RentalStartDate = DateTime.Now;
+            DropOffAddress = dropOffAddress;
+         
             Cost = cost;
+            Car = car;
+            PickUpICarStation = pickUpICarStation;
+            DropOffICarStation = dropOffICarStation;
             
         }
 
@@ -130,18 +140,12 @@ namespace Assignment2
             sb.AppendLine($"Rental ID: {RentalId}");
             sb.AppendLine($"Start Date: {StartDate.ToString("yyyy-MM-dd HH:mm")}");
             sb.AppendLine($"End Date: {EndDate.ToString("yyyy-MM-dd HH:mm")}");
-            sb.AppendLine($"Rental Status: {RentalStatus}");
-            sb.AppendLine($"Pick-Up Address: {PickUpAddress ?? "N/A"}");
-            sb.AppendLine($"Delivery Address: {DeliveryAddress ?? "N/A"}");
-            sb.AppendLine($"Returned Date: {ReturnedDate.ToString("yyyy-MM-dd HH:mm")}");
+            sb.AppendLine($"Pick-Up Address: {DeliveryAddress ?? "N/A"}");
+            sb.AppendLine($"Delivery Address: {DropOffAddress ?? "N/A"}");
             sb.AppendLine($"Cost: {Cost:C}");
-            sb.AppendLine($"Payment: {(Payment != null ? Payment.ToString() : "N/A")}");
-            sb.AppendLine($"Number of Reviews: {Reviews.Count}");
-            sb.AppendLine($"Vehicle Inspection: {VehicleInspection}");
-            sb.AppendLine($"Number of Accidents: {Accidents.Count}");
             sb.AppendLine($"Car: {Car}");
-            sb.AppendLine($"Pick-Up Station: {PickUpICarStation}");
-            sb.AppendLine($"Return Station: {ReturnICarStation}");
+            sb.AppendLine($"Pick-Up Station: {PickUpICarStation.StationName}");
+            sb.AppendLine($"Return Station: {DropOffICarStation.StationName}");
             return sb.ToString();
         }
 
@@ -178,6 +182,8 @@ namespace Assignment2
             double additionalCost = additionalDuration.TotalHours * costPerHour;
 
             return additionalCost;
+
+           
 
         }
     }

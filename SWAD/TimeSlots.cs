@@ -8,10 +8,10 @@ namespace Assignment2
 {
     internal class TimeSlots
     {
-        private DateOnly date;
+        private DateTime date;
         private Boolean availability;
 
-        public DateOnly Date
+        public DateTime Date
         {
             get { return date; }
             set { date = value; }
@@ -24,7 +24,7 @@ namespace Assignment2
 
         }
 
-        public TimeSlots(DateOnly Date, Boolean Availability) 
+        public TimeSlots(DateTime Date, Boolean Availability) 
         { 
             this.Date = Date;
             this.Availability = Availability;
