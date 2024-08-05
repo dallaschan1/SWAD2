@@ -1,42 +1,18 @@
-﻿using System;
+﻿using System.Text.RegularExpressions;
 
 namespace Assignment2
 {
     internal class DigitalWallet
     {
-        private string walletProvider;
-        private string providerUserId;
-        private string password;
-        private string walletEmail;
-        private string? walletPhoneNumber;
+        public string WalletProvider { get; set; }
 
-        private const string StoredPassword = "newAlex345"; // Moved inside the class
+        public string ProviderUserId { get; set; }
 
-        public string WalletProvider
-        {
-            get { return walletProvider; }
-            set { walletProvider = value; }
-        }
-        public string ProviderUserId
-        {
-            get { return providerUserId; }
-            set { providerUserId = value; }
-        }
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-        public string WalletEmail
-        {
-            get { return walletEmail; }
-            set { walletEmail = value; }
-        }
-        public string? WalletPhoneNumber
-        {
-            get { return walletPhoneNumber; }
-            set { walletPhoneNumber = value; }
-        }
+        public string Password { get; set; }
+
+        public string WalletEmail { get; set; }
+
+        public string? WalletPhoneNumber { get; set; }
 
         public DigitalWallet(string walletProvider, string providerUserId, string password, string walletEmail, string? walletPhoneNumber)
         {
@@ -46,6 +22,7 @@ namespace Assignment2
             WalletEmail = walletEmail;
             WalletPhoneNumber = walletPhoneNumber;
         }
+
 
         public bool IsValidWalletProvider(string walletProvider)
         {
@@ -64,11 +41,21 @@ namespace Assignment2
 
         public bool IsPasswordValid(string password)
         {
-            // Compare the entered password with the stored password
-            return password == StoredPassword;
+            // List of valid passwords
+            string[] validPasswords = { "newAlex345", "Alex123", "alexNew22", "thisIsAlex" };
+
+            foreach (var validPassword in validPasswords)
+            {
+                if (validPassword.Equals(password, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        public void SendAmount()
+
+        public void sendAmount()
         {
             double pricePerHour = 7.50;
             int hoursBooked = 5;
@@ -77,7 +64,8 @@ namespace Assignment2
             Console.WriteLine($"Total Amount: ${total:F2}");
         }
 
-        public void SendWalletDetails(string walletProvider, string providerUserId, string password, string walletEmail, string? walletPhoneNumber)
+
+        public void sendWalletDetails(string walletProvider, string providerUserId, string password, string walletEmail, string? walletPhoneNumber)
         {
             Console.WriteLine($"Wallet Provider: {walletProvider}");
             Console.WriteLine($"Wallet Provider ID: {providerUserId}");
