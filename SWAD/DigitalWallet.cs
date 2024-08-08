@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Assignment2
+﻿namespace SWAD
 {
     internal class DigitalWallet
     {
@@ -55,17 +53,17 @@ namespace Assignment2
         }
 
 
-        public void sendAmount()
+        public void sendAmount(ref double total)
         {
             double pricePerHour = 7.50;
             int hoursBooked = 5;
-            double total = pricePerHour * hoursBooked;
+            total = pricePerHour * hoursBooked;
 
             Console.WriteLine($"Total Amount: ${total:F2}");
         }
 
 
-        public void sendWalletDetails(string walletProvider, string providerUserId, string password, string walletEmail, string? walletPhoneNumber)
+        public void verifyWalletDetails(string walletProvider, string providerUserId, string password, string walletEmail, string? walletPhoneNumber)
         {
             Console.WriteLine($"Wallet Provider: {walletProvider}");
             Console.WriteLine($"Wallet Provider ID: {providerUserId}");
