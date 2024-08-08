@@ -42,6 +42,7 @@ namespace Assignment2
             set { phoneNo = value; }
         }
 
+        //List to store all user accounts in
         public List<Account> UserList { get { return userList; } }
 
         public Account(string username, string password, string email, string fullName, string phoneNo)
