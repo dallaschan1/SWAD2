@@ -61,15 +61,5 @@
 
             Console.WriteLine($"Total Amount: ${total:F2}");
         }
-
-
-        public void verifyWalletDetails(string walletProvider, string providerUserId, string password, string walletEmail, string? walletPhoneNumber)
-        {
-            Console.WriteLine($"Wallet Provider: {walletProvider}");
-            Console.WriteLine($"Wallet Provider ID: {providerUserId}");
-            Console.WriteLine($"Password: {password}");
-            Console.WriteLine($"Wallet Email: {walletEmail}");
-            Console.WriteLine($"Wallet Phone Number: {walletPhoneNumber}");
-        }
     }
 }
