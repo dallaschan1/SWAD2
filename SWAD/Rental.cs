@@ -116,22 +116,22 @@ namespace Assignment2
             set { dropOffICarStation = value; }
         }
 
-        public Rental(int rentalId, DateTime startDate, DateTime endDate, RentalStatuses rentalStatus, string? dropOffAddress, string? deliveryAddress, double cost, Car car, ICarStation dropOffICarStation, ICarStation pickUpICarStation)
-        {
-            RentalId = rentalId;
-            StartDate = startDate;
-            EndDate = endDate;
-            RentalStatus = rentalStatus;
-            DeliveryAddress = deliveryAddress;
-            RentalStartDate = DateTime.Now;
-            DropOffAddress = dropOffAddress;
+            public Rental(int rentalId, DateTime startDate, DateTime endDate, RentalStatuses rentalStatus, string? dropOffAddress, string? deliveryAddress, double cost, Car car, ICarStation dropOffICarStation, ICarStation pickUpICarStation)
+            {
+                RentalId = rentalId;
+                StartDate = startDate;
+                EndDate = endDate;
+                RentalStatus = rentalStatus;
+                DeliveryAddress = deliveryAddress;
+                RentalStartDate = DateTime.Now;
+                DropOffAddress = dropOffAddress;
          
-            Cost = cost;
-            Car = car;
-            PickUpICarStation = pickUpICarStation;
-            DropOffICarStation = dropOffICarStation;
+                Cost = cost;
+                Car = car;
+                PickUpICarStation = pickUpICarStation;
+                DropOffICarStation = dropOffICarStation;
             
-        }
+            }
 
         public override string ToString()
         {
@@ -173,18 +173,20 @@ namespace Assignment2
         }
 
         // Method to calculate additional cost
-        private static double CalculateAdditionalCost(DateTime originalEndDate, DateTime newEndDate, double costPerHour)
+        public static double CalculateAdditionalCost(DateTime EndDate, DateTime newEndDate, double costPerHour)
         {
+            if (newEndDate <= EndDate)
+            {
+                return 0.0; // No additional cost if the new end date is not an extension
+            }
+
             // Calculate the duration of the extended rental period
-            TimeSpan additionalDuration = newEndDate - originalEndDate;
+            TimeSpan additionalDuration = newEndDate - EndDate;
 
             // Calculate the additional cost
             double additionalCost = additionalDuration.TotalHours * costPerHour;
 
-            return additionalCost;
-
-           
-
+            return Math.Max(additionalCost, 0.0); // Ensure the cost is not negative
         }
     }
 }
