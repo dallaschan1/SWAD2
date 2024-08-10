@@ -74,14 +74,6 @@ namespace Assignment2
             userList.Add(account);
         }
 
-        //Method to list all the accounts
-        //public static void ListUsers()
-        //{
-        //    foreach (var user in userList)
-        //    {
-        //        Console.WriteLine(user.Username);
-        //    }
-        //}
 
     }
 }
