@@ -24,10 +24,10 @@ namespace Assignment2
         }
         
 
-        public Accident(DateTime timeOfAccident, string descriptionOfAccident)
+        public Accident(DateTime timeOfAccident, string DescriptionOfAccident)
         {
             TimeOfAccident = timeOfAccident;
-            DescriptionOfAccident = descriptionOfAccident;
+            this.DescriptionOfAccident = DescriptionOfAccident;
             
         }
     }

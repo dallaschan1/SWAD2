@@ -13,8 +13,8 @@ namespace Assignment2
         private string inspectionDetail;
 
         public DateTime InspectionDate { get {  return inspectionDate; } set {  inspectionDate = value; } }
-        public string InspectionStatus { get {  return inspectionStatus; } set {  InspectionStatus = value; } }
-        public string InspectionDetail { get {  return inspectionDetail; } set {  InspectionDetail = value; } }
+        public string InspectionStatus { get {  return inspectionStatus; } set {  inspectionStatus = value; } }
+        public string InspectionDetail { get {  return inspectionDetail; } set {  inspectionDetail = value; } }
 
         public VehicleInspection(DateTime inspectionDate, string inspectionStatus, string inspectionDetail ) 
         {

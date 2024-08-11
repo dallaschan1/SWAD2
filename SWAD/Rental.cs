@@ -28,7 +28,7 @@ namespace Assignment2
         private double cost;
         private Payment? payment;
         private List<Review> reviews = new List<Review>();
-        private VehicleInspection vehicleInspection;
+        private VehicleInspection? vehicleInspection;
         private List<Accident> accidents = new List<Accident>();
         private Car car;
         private ICarStation pickUpICarStation;
@@ -110,7 +110,7 @@ namespace Assignment2
             set { returnICarStation = value; }
         }
 
-        public Rental(int rentalId, DateOnly startDate, DateOnly endDate, RentalStatuses rentalStatus, string? pickUpAddress, string? deliveryAddress, DateTime returnedDate, double cost)
+        public Rental(int rentalId, DateOnly startDate, DateOnly endDate, RentalStatuses rentalStatus, string? pickUpAddress, string? deliveryAddress, DateTime returnedDate, double cost, ICarStation pickUpStation, ICarStation returnStation)
         {
             RentalId = rentalId;
             StartDate = startDate;
@@ -120,6 +120,8 @@ namespace Assignment2
             DeliveryAddress = deliveryAddress;
             ReturnedDate = returnedDate;
             Cost = cost;
+            PickUpICarStation = pickUpStation;
+            ReturnICarStation = returnStation;
             
         }
 
@@ -133,12 +135,7 @@ namespace Assignment2
             sb.AppendLine($"Rental Status: {RentalStatus}");
             sb.AppendLine($"Pick-Up Address: {PickUpAddress ?? "N/A"}");
             sb.AppendLine($"Delivery Address: {DeliveryAddress ?? "N/A"}");
-            sb.AppendLine($"Returned Date: {ReturnedDate.ToString("yyyy-MM-dd HH:mm")}");
             sb.AppendLine($"Cost: {Cost:C}");
-            sb.AppendLine($"Payment: {(Payment != null ? Payment.ToString() : "N/A")}");
-            sb.AppendLine($"Number of Reviews: {Reviews.Count}");
-            sb.AppendLine($"Vehicle Inspection: {VehicleInspection}");
-            sb.AppendLine($"Number of Accidents: {Accidents.Count}");
             sb.AppendLine($"Car: {Car}");
             sb.AppendLine($"Pick-Up Station: {PickUpICarStation}");
             sb.AppendLine($"Return Station: {ReturnICarStation}");
@@ -151,7 +148,7 @@ namespace Assignment2
         }
 
         // Added a method to check if a date range is available
-        public static bool IsDateRangeAvailable(List<Rental> rentals, int rentalId, DateTime newStartDate, DateTime newEndDate)
+        public static bool IsDateRangeAvailable(List<Rental> rentals, int rentalId, DateOnly newStartDate, DateOnly newEndDate)
         {
             foreach (var rental in rentals)
             {
@@ -169,7 +166,7 @@ namespace Assignment2
         }
 
         // Method to calculate additional cost
-        private static double CalculateAdditionalCost(DateTime originalEndDate, DateTime newEndDate, double costPerHour)
+        private static double CalculateAdditionalCost(DateOnly originalEndDate, DateOnly newEndDate, double costPerHour)
         {
             // Calculate the duration of the extended rental period
             TimeSpan additionalDuration = newEndDate - originalEndDate;
