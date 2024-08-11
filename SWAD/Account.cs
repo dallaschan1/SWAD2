@@ -42,6 +42,7 @@ namespace Assignment2
             set { phoneNo = value; }
         }
 
+        //List to store all user accounts in
         public List<Account> UserList { get { return userList; } }
 
         public Account(string username, string password, string email, string fullName, string phoneNo)
@@ -73,14 +74,6 @@ namespace Assignment2
             userList.Add(account);
         }
 
-        //Method to list all the accounts
-        //public static void ListUsers()
-        //{
-        //    foreach (var user in userList)
-        //    {
-        //        Console.WriteLine(user.Username);
-        //    }
-        //}
 
     }
 }

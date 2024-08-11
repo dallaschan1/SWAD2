@@ -119,7 +119,7 @@ namespace Assignment2
             this.timeSlots.Add(timeSlots);
         }
 
-        public void updateTimeSlotsAvailability(DateOnly startDate, DateOnly endDate, bool status)
+        public void updateTimeSlotsAvailability(DateTime startDate, DateTime endDate, bool status)
         {
             foreach (TimeSlots timeSlot in TimeSlots)
             {
@@ -134,5 +134,30 @@ namespace Assignment2
         {
             return this.TimeSlots.Where(slot => slot.Availability).ToList();
         }
+
+        public Boolean checkAvailability(DateTime startDate, DateTime endDate)
+        {
+            
+            // Get all time slots within the date range
+            var relevantSlots = TimeSlots
+                .Where(slot => slot.Date >= startDate && slot.Date <= endDate)
+                .OrderBy(slot => slot.Date)
+                .ToList();
+
+            
+            // Calculate the total number of hours in the range
+            int totalHours = (int)(endDate - startDate).TotalHours;
+        
+            // Check if we have slots for each hour in the range
+            if ((relevantSlots.Count - 1) != totalHours)
+            {
+                return false;
+            }
+
+            // Check if all slots are available
+            return relevantSlots.All(slot => slot.Availability);
+        }
+
+
     }
 }

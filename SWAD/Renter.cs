@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using static Assignment2.Rental;
@@ -118,8 +119,27 @@ namespace Assignment2
                 if (rental.RentalStatus == RentalStatuses.InProgress)
                 {
                     rentals.Remove(rental);
+                    break;
                 }
             }
         }
+
+        public void addRental(Rental rental)
+        {
+            rentals.Add(rental);
+        }
+
+        public Rental createRental(int rentalId, DateTime startDate, DateTime endDate, RentalStatuses Status, string? dropOffAddress, string? deliveryAddress, double cost, Car car, ICarStation dropOffICarStation, ICarStation AvailableICarStation)
+        {
+            if (dropOffAddress != null)
+            {
+                dropOffICarStation = AvailableICarStation;
+            }
+
+            Rental aRental = new Rental(rentalId, startDate, endDate, Status, dropOffAddress, deliveryAddress, cost, car, dropOffICarStation, AvailableICarStation);
+            rentals.Add(aRental);
+            return aRental;
+        }
+
     }
 }
